@@ -1,5 +1,13 @@
-import { FormControl, FormLabel, MenuItem, Select } from "@mui/material";
-import { Field } from "formik";
+import {
+  FormControl,
+  FormControlLabel,
+  FormGroup,
+  FormLabel,
+  MenuItem,
+  Select,
+  Checkbox,
+} from "@mui/material";
+import { Field, ErrorMessage } from "formik";
 import React from "react";
 
 const Selectinput = ({ name, label, items }) => {
@@ -15,6 +23,21 @@ const Selectinput = ({ name, label, items }) => {
           );
         })}
       </Field>
+      <ErrorMessage
+        name={name}
+        render={(msg) => <div className="error">{msg}</div>}
+      />
+      <div>
+        <FormControl>
+          <FormLabel>Demo</FormLabel>
+          <FormGroup>
+            <FormControlLabel
+              control={<Checkbox checked={true} name="Html" />}
+              label="Gilad Gray"
+            />
+          </FormGroup>
+        </FormControl>
+      </div>
     </div>
   );
 };

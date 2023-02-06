@@ -5,6 +5,7 @@ import TextField from "@mui/material/TextField";
 import Firstname from "./inputs/Textfield";
 import Selectin from "./inputs/Selectinput";
 import Radioinput from "./inputs/Radioinput";
+import Checkinput from "./inputs/Checkbox";
 
 const initialValues = {
   name: "",
@@ -12,6 +13,12 @@ const initialValues = {
   email: "",
   gender: "",
   domain: "",
+  skills: {
+    Html: false,
+    Css: false,
+    Javascript: false,
+    React: false,
+  },
 };
 
 // select values
@@ -24,6 +31,15 @@ const selectitems = [
 const radioitems = [
   { label: "Male", value: "Male" },
   { label: "Female", value: "Female" },
+];
+
+// checkBox values//
+
+const checkvalues = [
+  { label: "Html", value: "Html" },
+  { label: "Css", value: "Css" },
+  { label: "Javascript", value: "Javascript" },
+  { label: "React", value: "React" },
 ];
 console.log(initialValues);
 const App = () => {
@@ -45,6 +61,8 @@ const App = () => {
           validationSchema={Yup.object({
             name: Yup.string().min(2, "Too short").required("Required*"),
             lastname: Yup.string().required("Required*"),
+            email: Yup.string().required("Required*"),
+            domain: Yup.string().required("Required*"),
           })}
         >
           {({ props }) => {
@@ -60,6 +78,7 @@ const App = () => {
                 />
                 <Radioinput name="gender" label="Gender" items={radioitems} />
                 <Selectin label="Domain" name="domain" items={selectitems} />
+                <Checkinput name="skills" label="Skills" items={checkvalues} />
                 <button type="submit">Submit</button>
               </Form>
             );

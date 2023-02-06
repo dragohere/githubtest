@@ -12,8 +12,13 @@ const Textfield = ({ name, label, type, inputtype = "text", value }) => {
         label={label}
         fullWidth
         type={inputtype}
-        helperText={<ErrorMessage name={name} />}
-        // required
+        helperText={
+          <ErrorMessage
+            name={name}
+            render={(msg) => <div className="error">{msg}</div>}
+          />
+        }
+        required
         value={value}
       />
     </div>
